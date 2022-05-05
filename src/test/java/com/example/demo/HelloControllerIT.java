@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 //simple full-stack integration test
 
-public class DemoControllerIT {
+public class HelloControllerIT {
     @Autowired
     private TestRestTemplate template;
 
