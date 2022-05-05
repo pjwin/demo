@@ -1,7 +1,7 @@
 package com.example.demo;
 
-import com.example.demo.model.Customer;
-import com.example.demo.repository.CustomerRepository;
+import com.example.demo.customer.Customer;
+import com.example.demo.customer.CustomerRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -33,42 +33,42 @@ public class DemoApplication {
         };
     }
 
-    @Bean
-    public CommandLineRunner demo(CustomerRepository repository) {
-        return (args) -> {
-            // save a few customers
-            repository.save(new Customer("ABC Co., Inc."));
-            repository.save(new Customer("Hooli"));
-            repository.save(new Customer("Pied Piper"));
-            repository.save(new Customer("Lumon Industries"));
-
-
-            // fetch all customers
-            log.info("Customers found with findAll():");
-            log.info("-------------------------------");
-            for (Customer customer : repository.findAll()) {
-                log.info(customer.toString());
-            }
-            log.info("");
-
-            // fetch an individual customer by ID
-            Customer customer = repository.findById(1);
-            log.info("Customer found with findById(1):");
-            log.info("--------------------------------");
-            log.info(customer.toString());
-            log.info("");
-
-            // fetch customers by last name
-            log.info("Customer found with findByCustName('Lumon Industries'):");
-            log.info("--------------------------------------------");
-            repository.findByCustName("Lumon Industries").forEach(cust -> {
-                log.info(cust.toString());
-            });
-            // for (Customer cust : repository.findByCustName("Lumon Industries")) {
-            //  log.info(cust.toString());
-            // }
-            log.info("");
-            repository.deleteAll();
-        };
-    }
+//    @Bean
+//    public CommandLineRunner demo(CustomerRepository repository) {
+//        return (args) -> {
+//            // save a few customers
+//            repository.save(new Customer("ABC Co., Inc."));
+//            repository.save(new Customer("Hooli"));
+//            repository.save(new Customer("Pied Piper"));
+//            repository.save(new Customer("Lumon Industries"));
+//
+//
+//            // fetch all customers
+//            log.info("Customers found with findAll():");
+//            log.info("-------------------------------");
+//            for (Customer customer : repository.findAll()) {
+//                log.info(customer.toString());
+//            }
+//            log.info("");
+//
+//            // fetch an individual customer by ID
+//            Customer customer = repository.findById(1);
+//            log.info("Customer found with findById(1):");
+//            log.info("--------------------------------");
+//            log.info(customer.toString());
+//            log.info("");
+//
+//            // fetch customers by last name
+//            log.info("Customer found with findByCustName('Lumon Industries'):");
+//            log.info("--------------------------------------------");
+//            repository.findByCustName("Lumon Industries").forEach(cust -> {
+//                log.info(cust.toString());
+//            });
+//            // for (Customer cust : repository.findByCustName("Lumon Industries")) {
+//            //  log.info(cust.toString());
+//            // }
+//            log.info("");
+//            repository.deleteAll();
+//        };
+//    }
 }

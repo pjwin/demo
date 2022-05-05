@@ -1,4 +1,7 @@
-package com.example.demo.model;
+//Customer Domain Object
+//JPA Entity
+
+package com.example.demo.customer;
 
 import javax.persistence.*;
 
@@ -9,6 +12,7 @@ public class Customer {
     @Id
     @Column(name = "cust_id")
     private int custId;
+
     @Basic
     @Column(name = "cust_name")
     private String custName;
