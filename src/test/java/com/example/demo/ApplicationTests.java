@@ -13,14 +13,14 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-//@SpringBootTest
 //the whole application context to be created
+@SpringBootTest
 
-@WebMvcTest
 //create only the web layers of the context
+//@WebMvcTest
 
 @AutoConfigureMockMvc
-class DemoApplicationTests {
+class ApplicationTests {
 
 	@Autowired
 	private MockMvc mvc;
@@ -28,7 +28,8 @@ class DemoApplicationTests {
 	@Test
 	public void getHello() throws Exception {
 		mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.APPLICATION_JSON))
-				.andExpect(status().isOk())
-				.andExpect(content().string(equalTo("Greetings from Spring Boot!")));
+			.andExpect(status().isOk())
+			.andExpect(content().string(equalTo("Greetings from Spring Boot!")));
 	}
+
 }
