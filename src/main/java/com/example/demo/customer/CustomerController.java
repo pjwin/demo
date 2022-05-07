@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
@@ -37,12 +38,10 @@ public class CustomerController {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    Customer customer(@RequestBody Customer customer) {
-//         try {
-             return repository.save(customer);
-//         } catch {
-//             throw new ResponseStatusException(BAD_REQUEST, "Missing customer name");
-//        }
+    Customer customer(@Valid @RequestBody Customer customer) {
+        Customer customer2 = repository.save(customer);
+        if (customer2 == null) throw new ResponseStatusException(BAD_REQUEST);
+        return repository.save(customer);
     }
 
 }
