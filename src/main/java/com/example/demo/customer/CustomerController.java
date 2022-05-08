@@ -9,7 +9,6 @@ import org.springframework.web.server.ResponseStatusException;
 import javax.validation.Valid;
 import java.util.List;
 
-import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @RestController
@@ -23,7 +22,7 @@ public class CustomerController {
         this.repository = repository;
     }
 
-    @GetMapping
+    @GetMapping("")
     public List<Customer> find(@RequestParam(value = "name", required = false) String name) {
         if (name == null) return (List<Customer>) repository.findAll();
         log.info(String.format("Name query parameter = %s", name));
@@ -36,11 +35,9 @@ public class CustomerController {
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Unable to find resource"));
     }
 
-    @PostMapping
+    @PostMapping("")
     @ResponseStatus(code = HttpStatus.CREATED)
     Customer customer(@Valid @RequestBody Customer customer) {
-        Customer customer2 = repository.save(customer);
-        if (customer2 == null) throw new ResponseStatusException(BAD_REQUEST);
         return repository.save(customer);
     }
 

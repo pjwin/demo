@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.hello.HelloController;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -14,12 +15,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 //the whole application context to be created
-@SpringBootTest
+//@SpringBootTest
 
 //create only the web layers of the context
-//@WebMvcTest
+@WebMvcTest(HelloController.class)
 
-@AutoConfigureMockMvc
+//@AutoConfigureMockMvc
 class ApplicationTests {
 
 	@Autowired

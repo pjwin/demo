@@ -15,7 +15,7 @@ public class Customer {
     @Column(name = "cust_id", nullable = false)
     private int custId;
 
-    @Column(name = "cust_name")
+    @Column(name = "cust_name", nullable = false)
     @NotNull
     private String custName;
 
@@ -31,11 +31,19 @@ public class Customer {
     @Column(name = "zip", length = 10)
     private String zip;
 
-
-    protected Customer() {}
+    protected Customer() {
+    }
 
     public Customer(String custName) {
         this.custName = custName;
+    }
+
+    public Customer(String custName, String addr1, String city, String state, String zip) {
+        this.custName = custName;
+        this.addr1 = addr1;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
     }
 
     public int getCustId() {

@@ -18,7 +18,7 @@ public class EmployeeController {
         this.repository = repository;
     }
 
-    @GetMapping
+    @GetMapping("")
     public List<Employee> find(@RequestParam(value = "firstName", required = false) String firstName,
                                @RequestParam(value = "lastName", required = false) String lastName) {
         if (firstName != null) return repository.findByFirstName(firstName);
